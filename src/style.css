@@ -32,6 +32,7 @@ html, body {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 /* must have a parent container which have a dynamic width and height */
@@ -55,8 +56,9 @@ main {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: bisque;
-    z-index: -1;
+    /* background-color: bisque; */
+    border: 1px solid red;
+    z-index: 2;
 }
 #sec {
     position: relative;
@@ -65,10 +67,18 @@ main {
     width: 100%;
     height: 100vh;
     background-color: transparent;
-    /* border: 1px solid red; */
-    /* background-color: aquamarine; */
+    background-color: #f8f8f8;
     /* opacity: 0.4; */
-    z-index: 9;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.list_img_cont {
+    width: 327px;
+    height: 186px;
+    /* width: 654px;
+    height: 272px; */
 }
 
 /* Responsive Media Queries (Mobile-First) */
