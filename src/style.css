@@ -57,7 +57,7 @@ main {
     width: 100vw;
     height: 100vh;
     /* background-color: bisque; */
-    border: 1px solid red;
+    /* border: 2px solid red; */
     z-index: 2;
 }
 #sec {
@@ -81,17 +81,125 @@ main {
     height: 272px; */
 }
 
-/* Responsive Media Queries (Mobile-First) */
-/* Phone view: up to 576px */
-@media (max-width: 576px) {
-    html, body {
-        background-color: brown;
+.work {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    /* background-color: #f8f8f8; */
+    /* opacity: 0.4; */
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(100vw / 3);
+    /* letter-spacing: calc(-100vw / 4); */
+    color: lightgray;
+
+}
+
+
+
+
+.projects {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100vh; */
+    background-color: transparent;
+    /* background-color: #f8f8f8; */
+    /* opacity: 0.4; */
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 100px 0;
+}
+.projects_lines {
+    width: 55%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.project_container:nth-of-type(odd) {
+    margin-top: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* .list {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+/* ul {
+    list-style: none;
+    display: grid;
+    gap: 60px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 100px 0;
+    background-color: brown;
+}
+li {
+    width: 100%;
+    background-color: aqua;
+    padding: 0;
+}
+li:nth-of-type(odd) {
+    padding-top: 50px;
+}
+li:nth-of-type(even) {
+    padding-top: 0;
+} */
+
+@media (min-width: 1500px) {
+    .list ul {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
+@media (min-width: 768px) and (max-width: 1499px) {
+    .list ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 767px) {
+    .list ul {
+        grid-template-columns: 1fr;
+    }
+}
+/* Responsive Media Queries (Mobile-First) */
+/* Phone view: up to 576px */
+/* @media (max-width: 576px) {
+    html, body {
+        background-color: brown;
+    }
+} */
+
 /* Tablet view: 577px to 768px */
-@media (min-width: 577px) and (max-width: 768px) {
+/* @media (min-width: 577px) and (max-width: 768px) {
     html, body {
         background-color: cadetblue;
     }
-}
+} */

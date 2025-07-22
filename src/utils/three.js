@@ -38,7 +38,7 @@ export default class Three {
         this.isPlaying = true;
 
         this.raycaster = new THREE.Raycaster();
-        this.mouse = new THREE.Vector2();
+        this.mouse = new THREE.Vector2(0, 0);
         this.hasMouseMoved = false; // Track if mouse has moved
         this.hoveredPlane = null; // Track currently hovered plane
 
@@ -58,12 +58,14 @@ export default class Three {
             side: THREE.DoubleSide,
             uniforms: {
                 time: { value: 0 },
-                resolution: { value: new THREE.Vector4() },
-                uvRate1: { value: new THREE.Vector2(1, 1) },
-                uMouse: {value : this.mouse}
+                // resolution: { value: new THREE.Vector4() },
+                aspect: { value: new THREE.Vector2(1, 1) },
+                uMouse: {value : this.mouse},
+                uEnter: { value : null}
             },
             vertexShader: vertex,
             fragmentShader: fragment,
+            // wireframe: true
         });
 
         this.geometry = new THREE.PlaneGeometry(1, 1);
@@ -75,8 +77,10 @@ export default class Three {
         this.images.forEach((image) => {
             const imageBounds = image.getBoundingClientRect();
             const texture = new THREE.TextureLoader().load(image.src);
-            const geometry = new THREE.PlaneGeometry(imageBounds.width, imageBounds.height);
+            // const geometry = new THREE.PlaneGeometry(imageBounds.width, imageBounds.height);
+            const geometry = new THREE.PlaneGeometry(1, 1, 45, 30);
             const plane = new THREE.Mesh(geometry, this.material);
+            plane.scale.set(imageBounds.width, imageBounds.height)
             plane.position.set(
                 imageBounds.left - this.width / 2 + imageBounds.width / 2,
                 -imageBounds.top + this.height / 2 - imageBounds.height / 2,
@@ -106,11 +110,18 @@ export default class Three {
         let listTitles = document.querySelectorAll(".list_title");
         let listTitlesHeight = listTitles[0].offsetHeight
 
-        console.log(listNumHeight , listTitlesHeight)
+        // console.log(listNumHeight , listTitlesHeight)
         
         // Only trigger animation if this is a new hover
         if (this.hoveredPlane !== plane) {
             this.hoveredPlane = plane; // Update hovered plane
+            gsap.to(this.material.uniforms.uEnter, {
+                value: 1,
+                duration: 0.5, // 1 may be
+                // onComplete: () => {
+                //     console.log(" ok value changed")
+                // }
+            })
             gsap.to(`.list_num`, {
                 // y: "2vw",
                 y: listNumHeight / 2,
@@ -127,6 +138,13 @@ export default class Three {
         // Reset animations when hover ends
         if (this.hoveredPlane) {
             this.hoveredPlane = null;
+            gsap.to(this.material.uniforms.uEnter, {
+                value: 1,
+                duration: 0.5, // 1 may be
+                // onComplete: () => {
+                //     console.log("null")
+                // }
+            })
             gsap.to(`.list_num`, {
                 y: 0,
                 duration: 0.5,
@@ -145,6 +163,9 @@ export default class Three {
             this.hasMouseMoved = true; // Mark that mouse has moved
         });
     }
+
+
+    
 
     setupResize() {
         window.addEventListener("resize", this.resize.bind(this));
@@ -197,3 +218,7 @@ export default class Three {
         requestAnimationFrame(this.render.bind(this));
     }
 }
+
+
+
+
