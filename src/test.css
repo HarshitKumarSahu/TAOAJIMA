@@ -173,9 +173,11 @@ main {
         align-items: center;
         justify-content: center;
         gap: calc(var(--one-block-size) / 2);
+        padding: calc(var(--one-block-size) / 4);
     }
     .list_title {
         font-size: calc(var(--one-block-size) * 0.75);
+        max-width: 50%;
     }
 }
 
