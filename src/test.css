@@ -8,8 +8,8 @@
 }
 /* custom */
 @font-face {
-    font-family: custom-font-name;
-    src: url("url from the folder or link");
+    font-family: test;
+    src: url("../public/coves-typeface/Coves\ Bold.otf");
 }
 
 :root {
@@ -27,7 +27,7 @@ html, body {
     height: 100%;
     /* background-color: grey; */
     font-family: 'Roboto', system-ui, sans-serif;
-    /* font-family: Helvetica, sans-serif; */
+    /* font-family: test; */
     /* smoothing the font */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -96,7 +96,8 @@ main {
     justify-content: center;
     flex-direction: column;
     font-size: calc(100vw / 3);
-    /* letter-spacing: calc(-100vw / 4); */
+    /* font-size: calc(var(--one-block-size) * 9); */
+    /* letter-spacing: calc(var(--one-block-size) * (-0.5)); */
     color: rgba(0, 0, 0, 0.10);
     /* transform: scaleY(1.75); */
 }
