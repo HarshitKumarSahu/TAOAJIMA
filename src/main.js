@@ -1,9 +1,9 @@
 // import './style.css'
-import Three from "./utils/three"
+import Three from "./utils/test"
 
-// new Three({
-//     dom: document.querySelector(".canvas"),
-// });
+new Three({
+    dom: document.querySelector(".canvas"),
+});
 
 // alert("ok")
 

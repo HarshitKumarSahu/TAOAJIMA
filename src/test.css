@@ -46,6 +46,7 @@ img {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    opacity: 0.1;
 }
 
 main {
@@ -63,7 +64,7 @@ main {
     height: 100vh;
     /* background-color: bisque; */
     /* border: 2px solid red; */
-    z-index: 2;
+    z-index: -1;
 }
 #sec {
     position: relative;
@@ -101,7 +102,9 @@ main {
     color: rgba(0, 0, 0, 0.10);
     /* transform: scaleY(1.75); */
 }
-
+.work h1 {
+    mix-blend-mode: difference;
+}
 
 
 

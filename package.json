@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 192.168.227.103",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "gsap": "^3.13.0",
+    "imagesloaded": "^5.0.0",
     "three": "^0.178.0",
     "vite-plugin-glsl": "^1.5.1"
   }
