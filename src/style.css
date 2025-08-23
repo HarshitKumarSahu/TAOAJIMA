@@ -8,14 +8,12 @@
 }
 /* custom */
 @font-face {
-    font-family: custom-font-name;
-    src: url("url from the folder or link");
+    font-family: test;
+    src: url("../public/coves-typeface/Coves Bold.otf");
 }
 
 :root {
     --one-block-size: calc(100vw / 28);
-    /* --item-padding: 10px;
-    --text-color: #000; */
 }
 
 /* Reset */
@@ -27,13 +25,9 @@
 html, body {
     width: 100%;
     height: 100%;
-    /* background-color: grey; */
     font-family: 'Roboto', system-ui, sans-serif;
-    /* font-family: Helvetica, sans-serif; */
-    /* smoothing the font */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* smooth scroll */
     scroll-behavior: smooth;
 }
 
@@ -42,12 +36,14 @@ a {
     color: black;
 }
 
-/* must have a parent container which have a dynamic width and height */
 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: auto;
 }
 
 main {
@@ -55,33 +51,30 @@ main {
     position: relative;
     top: 0;
     left: 0;
-    /* background-color: aqua; */
 }
+
 .canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* background-color: bisque; */
-    /* border: 2px solid red; */
-    z-index: 2;
+    z-index: 2; /* Ensure canvas is visually on top */
+    pointer-events: none; /* Allow mouse events to pass through */
 }
+
 #sec {
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: transparent;
     background-color: #f8f8f8;
-    /* opacity: 0.4; */
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 
 .work {
     position: fixed;
@@ -90,74 +83,57 @@ main {
     width: 100%;
     height: 100vh;
     background-color: transparent;
-    /* background-color: #f8f8f8; */
-    /* opacity: 0.4; */
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     font-size: calc(100vw / 3);
-    /* letter-spacing: calc(-100vw / 4); */
-    color: rgb(240, 240, 240);
-    /* transform: scaleY(1.75); */
+    color: rgba(0, 0, 0, 0.10);
 }
-
-
-
 
 .projects {
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    /* height: 100vh; */
     background-color: transparent;
-    /* background-color: #f8f8f8; */
-    /* opacity: 0.4; */
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* gap: 30px; */
     padding: calc(var(--one-block-size) * 2) 0;
 }
+
 .projects_lines {
-    /* width: clamp(500px, 55vw, 1095px); */
-    /* width: 55vw; */
     width: calc(var(--one-block-size) * 16);
-    /* max-width: 1095px; */ 
-    /* width: clamp(50%, 55%, 100%); */
-    /* background-color: aqua; */
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    /* gap: 100px; */
     gap: calc(var(--one-block-size) * 2);
-    background-color: aqua;
-    /* border: 1px solid orange; */
 }
 
 .project_container:nth-of-type(odd) {
     margin-top: calc(var(--one-block-size) * 2 - 8px);
 }
+
 .list_num {
     font-size: calc(var(--one-block-size) * 0.33);
 }
+
 .list_img_cont {
-    /* width: 327px;
-    height: 186px; */
     width: calc(var(--one-block-size) * 6.5);
     height: calc(var(--one-block-size) * 3.75);
 }
+
 .list_title {
     font-size: calc(var(--one-block-size) * 0.45);
 }
 
 @media (max-width: 768px) {
-    html, body {
-        background-color: brown;
+    :root {
+        --one-block-size: calc(100vw / 15);
     }
     .projects_lines {
         width: 100%;
@@ -171,124 +147,17 @@ main {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1vw;
-    }
-}
-
-/* Tablet view: 577px to 768px */
-@media (min-width: 769px) and (max-width: 1025px) {
-    html, body {
-        background-color: cadetblue;
-    }
-    .projects_lines {
-        width: calc(var(--one-block-size) * 20);
-        gap: calc(var(--one-block-size) * 2);
-    }
-    .list_num {
-        font-size: calc(var(--one-block-size) * 0.33);
-    }
-    .list_img_cont {
-        /* width: 327px;
-        height: 186px; */
-        width: calc(var(--one-block-size) * 6.5);
-        height: calc(var(--one-block-size) * 3.75);
+        gap: calc(var(--one-block-size) / 2);
+        padding: calc(var(--one-block-size) / 4);
     }
     .list_title {
-        font-size: calc(var(--one-block-size) * 0.45);
+        font-size: calc(var(--one-block-size) * 0.75);
+        max-width: 50%;
     }
 }
 
-
-
-/* Responsive Media Queries (Mobile-First) */
-/* Phone view: up to 576px */
-/* @media (max-width: 576px) {
-    html, body {
-        background-color: brown;
-    }
-    .projects_lines {
-        width: 100%;
-        flex-direction: column;
+@media (min-width: 769px) and (max-width: 1025px) {
+    :root {
+        --one-block-size: calc(100vw / 22);
     }
 }
-@media (min-width: 577px) and (max-width: 768px) {
-    html, body {
-        background-color: cadetblue;
-    }
-    .projects_lines {
-        width: 100%;
-        flex-direction: column;
-    }
-} */
-
-
-
-
-
-
-
-
-
-
-/* .list {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: transparent;
-
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-/* ul {
-    list-style: none;
-    display: grid;
-    gap: 60px;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 100px 0;
-    background-color: brown;
-}
-li {
-    width: 100%;
-    background-color: aqua;
-    padding: 0;
-}
-li:nth-of-type(odd) {
-    padding-top: 50px;
-}
-li:nth-of-type(even) {
-    padding-top: 0;
-} */
-
-/* @media (min-width: 1500px) {
-    .list ul {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1499px) {
-    .list ul {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 767px) {
-    .list ul {
-        grid-template-columns: 1fr;
-    }
-} */
-/* Responsive Media Queries (Mobile-First) */
-/* Phone view: up to 576px */
-/* @media (max-width: 576px) {
-    html, body {
-        background-color: brown;
-    }
-} */
-
-/* Tablet view: 577px to 768px */
-/* @media (min-width: 577px) and (max-width: 768px) {
-    html, body {
-        background-color: cadetblue;
-    }
-} */
