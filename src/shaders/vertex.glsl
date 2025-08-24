@@ -184,6 +184,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 uniform float uTime;
 varying float vNoise;
 varying vec2 vUv;
@@ -200,18 +213,18 @@ void main() {
     vec2 correctAspectUV = vec2(vUv.x * aspect.x / aspect.y, vUv.y);
 
     float radius = 0.575;
-    float amplitude = 0.1;
+    float amplitude = 0.1125;
     float frequency = 20.0;
-    float circle = smoothstep(radius, 0.0, distance(correctAspectHover, correctAspectUV));
+    float circle = smoothstep(radius, 0.0, distance(correctAspectUV, correctAspectHover));
     vCircle = circle;
 
-    float dist = distance(correctAspectHover, correctAspectUV);
+    float dist = distance(correctAspectUV, correctAspectHover);
 
     float scaleFactor = 0.2;
     float waves = sin(dist * frequency - uTime * 7.) * amplitude;
-    newPosition.z += waves * circle * uHoverState;
     newPosition.x += -uHover.x * 50.0 * uHoverState;
     newPosition.xy *= 1.0 + scaleFactor * uHoverState;
+    newPosition.z += waves * circle * uHoverState;
     vCircle = waves * circle * uHoverState;
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);

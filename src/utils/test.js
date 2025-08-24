@@ -7,6 +7,7 @@ import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 // import { backgroundIntensity } from "three/src/nodes/TSL.js";
 
+import texture from "/2.jpg"
 export default class Three {
     constructor(options) {
         this.scene = new THREE.Scene();
@@ -300,6 +301,7 @@ export default class Three {
             uniforms: {
                 uTime: { value: 0 },
                 uImage: { value: null },
+                uImage1: { value: new THREE.TextureLoader().load(texture)},
                 uHover: { value: new THREE.Vector2(0.5, 0.5) },
                 uHoverState: { value: 0 },
                 aspect: { value: new THREE.Vector2(1, 1) }, // Default aspect
@@ -453,8 +455,8 @@ export default class Three {
 
 
     render() {
-        // this.time += 0.1;
-        this.time += this.clock.getDelta();
+        this.time += 0.01;
+        // this.time += this.clock.getDelta();
 
         // Manually update Lenis
         this.scroll.raf(performance.now());

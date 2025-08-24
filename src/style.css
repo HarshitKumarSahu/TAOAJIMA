@@ -105,6 +105,12 @@ main {
     flex-direction: column;
     padding: calc(var(--one-block-size) * 2) 0;
 }
+/* .projects_lines:first-child {
+    padding-top: calc(var(--one-block-size) * 2);
+}
+.projects_lines:last-child {
+    padding-top: calc(var(--one-block-size) * 2);
+} */
 
 .projects_lines {
     width: calc(var(--one-block-size) * 16);
@@ -126,7 +132,6 @@ main {
     width: calc(var(--one-block-size) * 6.5);
     height: calc(var(--one-block-size) * 3.75);
 }
-
 .list_title {
     font-size: calc(var(--one-block-size) * 0.45);
 }
