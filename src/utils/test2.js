@@ -406,7 +406,9 @@ export default class Three {
         this.camera.aspect = this.width / this.height;
         this.camera.fov = 2 * Math.atan((this.height / 2) / this.cameraDistance) * (180 / Math.PI);
         this.camera.updateProjectionMatrix();
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.setPosition();
+
     }
 
     addImages() {
@@ -448,7 +450,7 @@ export default class Three {
 
             // Create plane geometry with correct dimensions
             let imgGeo = new THREE.PlaneGeometry(1, 1, 50, 50);
-            imgGeo.scale(imgBounds.width, imgBounds.height, 1);
+            // imgGeo.scale(imgBounds.width, imgBounds.height, 1);
 
             // Clone material and assign textures
             let imgMat = this.material.clone();
@@ -514,6 +516,7 @@ export default class Three {
 
             // Create mesh
             let imgMesh = new THREE.Mesh(imgGeo, imgMat);
+            imgMesh.scale.set(imgBounds.width, imgBounds.height, 1);
             this.scene.add(imgMesh);
 
             return {
@@ -528,7 +531,17 @@ export default class Three {
     }
 
     setPosition() {
+        // this.imageStore.forEach(img => {
+        //     img.mesh.position.x = img.left - this.width/2 + img.width/2;
+        //     img.mesh.position.y = this.currentScroll - img.top + this.height/2 - img.height/2;
+        // });
         this.imageStore.forEach(img => {
+            const bounds = img.img.getBoundingClientRect();
+            img.top = bounds.top + window.scrollY; // Adjust for document scroll position
+            img.left = bounds.left;
+            img.width = bounds.width;
+            img.height = bounds.height;
+    
             img.mesh.position.x = img.left - this.width/2 + img.width/2;
             img.mesh.position.y = this.currentScroll - img.top + this.height/2 - img.height/2;
         });

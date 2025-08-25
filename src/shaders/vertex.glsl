@@ -222,7 +222,7 @@ void main() {
 
     float scaleFactor = 0.2;
     float waves = sin(dist * frequency - uTime * 7.) * amplitude;
-    newPosition.x += -uHover.x * 50.0 * uHoverState;
+    newPosition.x += -uHover.x * .125 * uHoverState;
     newPosition.xy *= 1.0 + scaleFactor * uHoverState;
     newPosition.z += waves * circle * uHoverState;
     vCircle = waves * circle * uHoverState;
