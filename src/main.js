@@ -1,5 +1,6 @@
 // import './style.css'
-import Three from "./utils/test2"
+// import Three from "./utils/test2"
+import Three from "./utils/testwithfullpg.js"
 
 new Three({
     dom: document.querySelector(".canvas"),
