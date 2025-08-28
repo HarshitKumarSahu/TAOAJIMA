@@ -1,6 +1,7 @@
 // import './style.css'
-// import Three from "./utils/test2"
-import Three from "./utils/testwithfullpg.js"
+import Three from "./utils/three"
+// import Three from "./utils/ok.js"
+import gsap from "gsap";
 
 new Three({
     dom: document.querySelector(".canvas"),

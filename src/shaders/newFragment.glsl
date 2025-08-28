@@ -230,5 +230,5 @@ void main() {
     }
 
     gl_FragColor = finalTexture;
-    gl_FragColor.rgb += vCircle/3.;
+    gl_FragColor.rgb += vCircle/2.;
 }

@@ -214,7 +214,7 @@ void main() {
     vec4 fullScreenState = vec4(newPosition, 1.0);
     fullScreenState.x *= uResolution.x;
     fullScreenState.y *= uResolution.y;
-    fullScreenState.z += uCorners.y;
+    fullScreenState.z += .15;
     float cornersProgress = mix(
         mix(uCorners.z, uCorners.w, uv.x),
         mix(uCorners.x, uCorners.y, uv.x),
