@@ -29,6 +29,7 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    overflow: hidden; /* Lock scroll during preloader */
 }
 
 a {
@@ -43,7 +44,6 @@ img {
     object-position: center;
     opacity: 0;
     z-index: 1;
-    /* pointer-events: auto; */
     pointer-events: none;
 }
 
@@ -54,16 +54,6 @@ main {
     left: 0;
 }
 
-/* .canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 2; /* Ensure canvas is visually on top 
-    pointer-events: none; /* Allow mouse events to pass through 
-} */
-
 .canvas {
     position: fixed;
     top: 0;
@@ -71,7 +61,7 @@ main {
     width: 100vw;
     height: 100vh;
     z-index: 2;
-    pointer-events: auto; /* Changed from none */
+    pointer-events: none; /* Disable during preloader */
 }
 
 #sec {
@@ -99,12 +89,13 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-size: calc(100vw / 3);
+    font-size: 10vw;
     color: rgba(0, 0, 0, 0.10);
+    pointer-events: none;
 }
 
 .projects {
-    position: relative;
+    position: fixed; /* Fixed during preloader to stay off-screen */
     top: 100vh;
     left: 0;
     width: 100%;
@@ -115,13 +106,8 @@ main {
     justify-content: center;
     flex-direction: column;
     padding: calc(var(--one-block-size) * 2) 0;
+    transition: none; /* Prevent CSS transitions */
 }
-/* .projects_lines:first-child {
-    height: 100vh;
-} */
-/*.projects_lines:last-child {
-    padding-top: calc(var(--one-block-size) * 2);
-} */
 
 .projects_lines {
     width: calc(var(--one-block-size) * 16);
@@ -142,9 +128,51 @@ main {
 .list_img_cont {
     width: calc(var(--one-block-size) * 6.5);
     height: calc(var(--one-block-size) * 3.75);
+    /* background-color: rgba(0, 0, 0, 0.10); */
+    background-color: #e5e5e5;
 }
+
 .list_title {
     font-size: calc(var(--one-block-size) * 0.45);
+}
+
+.info {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: calc(var(--one-block-size) * 0.45);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: transparent; /* Changed to transparent for better integration */
+    /* mix-blend-mode: difference; */
+    margin: calc(var(--one-block-size) * 0.15);
+}
+
+.info h1 {
+    text-align: end;
+    font-size: calc(var(--one-block-size) * 0.45);
+    font-weight: 400;
+    overflow: hidden;
+    position: absolute; /* Stack h1 elements on top of each other */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    width: 100%;
+    mix-blend-mode:difference;
+    color: gray;
+}
+.info h1:last-child {
+    color: #f8f8f8;
+    mix-blend-mode:difference;
+}
+
+.info h1 span {
+    display: inline-block;
+    /* mix-blend-mode: difference; */
 }
 
 @media (max-width: 768px) {
@@ -176,4 +204,5 @@ main {
     :root {
         --one-block-size: calc(100vw / 22);
     }
+
 }
