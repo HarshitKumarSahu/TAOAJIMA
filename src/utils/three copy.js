@@ -59,7 +59,7 @@ export default class Three {
         }
 
         // Set initial font size to 200vw
-        gsap.set(this.workElement, { fontSize: '200vw' });
+        // gsap.set(this.workElement, { fontSize: '200vw' });
 
         // Hide WebGL content during preloader
         this.scene.visible = false;
