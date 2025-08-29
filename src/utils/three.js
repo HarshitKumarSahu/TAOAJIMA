@@ -81,11 +81,11 @@ export default class Three {
             const updateProgress = () => {
                 loadedAssets++;
                 const progress = loadedAssets / totalAssets;
-                gsap.to(this.workElement, {
-                    fontSize: `${10 + progress * 90}vw`,
-                    duration: 0.5,
-                    ease: "power2.out",
-                });
+                // gsap.to(this.workElement, {
+                //     fontSize: `${10 + progress * 90}vw`,
+                //     duration: 0.5,
+                //     ease: "power2.out",
+                // });
                 if (loadedAssets >= totalAssets) {
                     const endTime = performance.now();
                     const loadDuration = (endTime - startTime) / 1000;
