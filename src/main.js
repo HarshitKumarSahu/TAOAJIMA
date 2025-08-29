@@ -7,6 +7,28 @@ new Three({
     dom: document.querySelector(".canvas"),
 });
 
+// function breakTheTextGsap(domElem) {
+//     let domElemVar = domElem.textContent;
+//     let domElemHeight = domElem.offsetHeight;
+//     // alert(domElemHeight)
+//     let splittedText = domElemVar.split("");
+//     let clutter = "";  
+//     splittedText.forEach(function(element, index) {
+//         clutter += `<span class="element">${element}</span>`;
+//     });
+//     h1.innerHTML = clutter
+
+//     gsap.from(".element", {
+//         y: domElemHeight,
+//         duration:0.8,
+//         stagger:0.02,
+//         ease: "expoScale(0.5,7,none)", 
+//     })
+// }
+
+// let h1 = document.querySelector(".info h1");
+// breakTheTextGsap(h1)
+
 // alert("ok")
 
 

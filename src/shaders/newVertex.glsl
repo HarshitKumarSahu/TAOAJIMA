@@ -178,6 +178,7 @@ uniform vec2 uResolution;
 uniform vec2 uQuadSize;
 uniform vec4 uCorners;
 uniform float uIsFullScreen;
+uniform float uIsMobile;
 
 varying vec2 vSize;
 
@@ -198,9 +199,9 @@ void main() {
     float dist = distance(correctAspectUV, correctAspectHover);
     float waves = sin(dist * frequency - uTime * 7.) * amplitude;
 
-    if (uIsFullScreen == 0.0) {
+    if (uIsFullScreen == 0.0 && uIsMobile == 0.0) {
         newPosition.x += -uHover.x * 0.125 * uHoverState;
-        // newPosition.xy *= 1.0 + 0.2 * uHoverState;
+        newPosition.xy *= 1.0 + 0.25 * uHoverState;
         newPosition.z += waves * circle * uHoverState;
         vCircle = waves * circle * uHoverState;
     } else {
