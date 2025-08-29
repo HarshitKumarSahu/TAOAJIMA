@@ -170,8 +170,8 @@ export default class Three {
                     this.startApp();
                 }
             })
-            .to(this.workElement, {
-                fontSize: 'calc(100vw / 3)',
+            .from(this.workElement, {
+                fontSize: '200vw',
                 duration: finalDuration,
                 ease: "power2.out",
             }, 0)
