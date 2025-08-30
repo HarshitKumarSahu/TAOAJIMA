@@ -89,9 +89,12 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-size: calc(100vw / 3);
+    /* font-size: calc(100vw / 3); */
     color: rgba(0, 0, 0, 0.10);
     pointer-events: none;
+}
+.work p {
+    font-size: calc(100vw / 3);
 }
 
 .projects {

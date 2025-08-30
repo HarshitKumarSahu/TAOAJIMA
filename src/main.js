@@ -1,4 +1,4 @@
-import './style.css'
+// import './style.css'
 import Three from "./utils/three copy"
 
 new Three({

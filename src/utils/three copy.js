@@ -47,7 +47,7 @@ export default class Three {
         this.videos = [...document.querySelectorAll("video.project_video")];
 
         // Preloader elements
-        this.workElement = document.querySelector('.work');
+        this.workElement = document.querySelector('.work p');
         this.projectsElement = document.querySelector('.projects');
         this.infoH1s = document.querySelectorAll('.info h1');
 
