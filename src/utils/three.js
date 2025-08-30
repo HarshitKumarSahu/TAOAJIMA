@@ -47,7 +47,7 @@ export default class Three {
         this.videos = [...document.querySelectorAll("video.project_video")];
 
         // Preloader elements
-        this.workElement = document.querySelector('.work');
+        this.workElement = document.querySelector('.work p');
         this.projectsElement = document.querySelector('.projects');
         this.infoH1s = document.querySelectorAll('.info h1');
 
@@ -57,6 +57,9 @@ export default class Three {
             this.startApp();
             return;
         }
+
+        // Set initial font size to 200vw
+        // gsap.set(this.workElement, { fontSize: '200vw' });
 
         // Hide WebGL content during preloader
         this.scene.visible = false;
@@ -80,12 +83,6 @@ export default class Three {
 
             const updateProgress = () => {
                 loadedAssets++;
-                const progress = loadedAssets / totalAssets;
-                gsap.to(this.workElement, {
-                    fontSize: `${10 + progress * 90}vw`,
-                    duration: 0.5,
-                    ease: "power2.out",
-                });
                 if (loadedAssets >= totalAssets) {
                     const endTime = performance.now();
                     const loadDuration = (endTime - startTime) / 1000;
@@ -173,16 +170,11 @@ export default class Three {
                     this.startApp();
                 }
             })
-            .to(this.workElement, {
-                fontSize: 'calc(100vw / 3)',
+            .from(this.workElement, {
+                fontSize: '200vw',
                 duration: finalDuration,
                 ease: "power2.out",
             }, 0)
-            // .to(this.workElement, {
-            //     opacity: 0,
-            //     duration: 0.5,
-            //     ease: "power2.out",
-            // }, finalDuration - 0.4)
             .to(this.projectsElement, {
                 top: 0,
                 duration: 1,
@@ -190,6 +182,7 @@ export default class Three {
             }, finalDuration - 0.6);
         });
     }
+
 
     breakTheTextGsap(domElem) {
         let domElemVar = domElem.textContent;

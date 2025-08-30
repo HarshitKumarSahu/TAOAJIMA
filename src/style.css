@@ -187,6 +187,13 @@ main {
         flex-direction: column;
         align-items: center;
     }
+    .project_container {
+        display: flex;
+        align-items: center;
+        justify-content: baseline;
+        width: 100%;
+        margin-left: calc(var(--one-block-size) * 0.75);
+    }
     .list_num {
         display: none;
     }
