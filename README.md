@@ -6,7 +6,7 @@ This project, **TAOAJIMA**, is an interactive web-based portfolio gallery design
 
 ## Live Demo
 
-[View the live demo of TAOAJIMA here](https://github.com/HarshitKumarSahu/TAOTAJIMA)
+[View the live demo of TAOAJIMA here](https://taoajima.vercel.app/)
 
 ## Homepage Screenshot
 
